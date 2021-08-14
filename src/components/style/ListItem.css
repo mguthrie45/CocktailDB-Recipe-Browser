@@ -1,0 +1,8 @@
+#drink-card {
+  transition: .25s;
+}
+
+#drink-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
