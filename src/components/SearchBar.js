@@ -21,11 +21,11 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className='item'>
+      <div className='item' style={{paddingLeft: '0'}}>
         <div>
           <form onSubmit={this.onFormSubmit} className='ui form'>
             <div className='field'>
-              <input type='text' placeholder='Search drinks...' value={this.state.name} onChange={e => this.onSearchChange(e)}>
+              <input id='search-input' type='text' placeholder='Search drinks...' value={this.state.name} onChange={e => this.onSearchChange(e)}>
               </input>
             </div>
           </form>

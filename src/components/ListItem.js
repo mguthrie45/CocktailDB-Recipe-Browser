@@ -3,12 +3,12 @@ import './style/ListItem.css';
 
 const ListItem = ({name, cat, src, imgSrc, ingredients, glass, instructions}) => {
   return (
-    <div className='column'>
-      <div className='ui container'>
+    <div className='column' id='card-column'>
+      <div className='ui container' id='card-container'>
         <div className="ui card" id='drink-card'>
           <div className="ui slide up masked reveal image">
             <img src={imgSrc} className='visible content' />
-            <div className='hidden content' style={{backgroundColor: 'white', height: '100%', padding: '9px', overflowY: 'auto'}}>
+            <div className='hidden content' style={{backgroundColor: 'black', color: 'white', height: '100%', padding: '9px', overflowY: 'auto'}}>
                 <div className='header' style={{fontSize: '18px', textAlign: 'center', fontWeight: 'bold', paddingTop: '7px', paddingBottom: '10px'}}>Ingredients</div>
                 {ingredients.map((ingredient, key) => {
                   if (key == ingredients.length - 1) {
@@ -17,10 +17,10 @@ const ListItem = ({name, cat, src, imgSrc, ingredients, glass, instructions}) =>
                   return <span key={key} style={{fontSize: '12px'}}>{ingredient}, </span>;
                 })}
                 <br/>
-                <span style={{fontSize: '12px', color: 'gray', display: 'block', marginTop: '8px'}}>{instructions}</span>
+                <span style={{fontSize: '12px', color: '#afafaf', display: 'block', marginTop: '8px'}}>{instructions}</span>
             </div>
           </div>
-          <div className="content">
+          <div className="content" style={{backgroundColor: 'white'}}>
             <a href={src} className="header">{name}</a>
             <div className="meta">
               <span className="date">{cat}</span>

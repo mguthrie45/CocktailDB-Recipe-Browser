@@ -30,7 +30,7 @@ class TaskBar extends React.Component {
   render() {
 
     return (
-      <div className='ui four item menu' style={{marginBottom: '40px'}}>
+      <div className='ui menu' style={{marginBottom: '40px', background: 'none'}}>
         <SearchBar onSubmit={this.props.onSearch}/>
         <FilterBox
           onItemChange={this.onIngredChange}

@@ -1,5 +1,17 @@
 #drink-card {
-  transition: .25s;
+  transition: 0.25s;
+  box-shadow: none;
+  border-radius: 5px;
+  background-color: black;
+}
+
+#card-container {
+  border: none;
+  box-shadow: none;
+}
+
+#card-column {
+  border: none;
 }
 
 #drink-card:hover {
