@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import List from './List.js'
 import TaskBar from './TaskBar.js';
+import {filterDrinks} from '../utils.js';
 
 class App extends React.Component {
   state = {
@@ -108,9 +109,7 @@ class App extends React.Component {
     if (drinks !== null && category !== null) {
       //find intersection of already existing data with data by category
       let catDrinks = await this.getDrinksByCategory(category);
-      drinks = drinks.filter((item) => {
-        return catDrinks.includes(item);
-      });
+      drinks = filterDrinks(drinks, catDrinks);
     }
     else if (category !== null) {
       //set data to search by category
@@ -120,16 +119,15 @@ class App extends React.Component {
     if (drinks !== null && glass !== null) {
       //find intersection of already existing data with data by glass
       let glassDrinks = await this.getDrinksByGlass(glass);
-      drinks = drinks.filter((item) => {
-        return glassDrinks.includes(item);
-      });
+      console.log(glassDrinks);
+      drinks = filterDrinks(drinks, glassDrinks);
     }
     else if (glass !== null) {
       //set data to search by glass
       drinks = await this.getDrinksByGlass(glass);
     }
 
-    console.log(drinks);
+    this.setState({data: drinks});
   }
 
   renderContent() {
