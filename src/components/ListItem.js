@@ -8,7 +8,7 @@ const ListItem = ({name, cat, src, imgSrc, ingredients, glass, instructions}) =>
         <div className="ui card" id='drink-card'>
           <div className="ui slide up masked reveal image">
             <img src={imgSrc} className='visible content' />
-            <div className='hidden content' style={{backgroundColor: 'black', color: 'white', height: '100%', padding: '9px', overflowY: 'auto'}}>
+            <div className='hidden content' style={{backgroundColor: 'white', color: 'black', height: '100%', padding: '9px', overflowY: 'auto'}}>
                 <div className='header' style={{fontSize: '18px', textAlign: 'center', fontWeight: 'bold', paddingTop: '7px', paddingBottom: '10px'}}>Ingredients</div>
                 {ingredients.map((ingredient, key) => {
                   if (key == ingredients.length - 1) {
@@ -21,7 +21,7 @@ const ListItem = ({name, cat, src, imgSrc, ingredients, glass, instructions}) =>
             </div>
           </div>
           <div className="content" style={{backgroundColor: 'white'}}>
-            <a href={src} className="header">{name}</a>
+            <span className="header">{name}</span>
             <div className="meta">
               <span className="date">{cat}</span>
             </div>

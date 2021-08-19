@@ -2,6 +2,7 @@ import React from 'react';
 
 class FilterBox extends React.Component {
   state = {};
+  defaults = ['type', 'ingredients', 'glass'];
 
   mapOptions() {
     if (this.props.options !== null) {
@@ -53,6 +54,9 @@ class FilterBox extends React.Component {
   onItemChange = (evt) => {
     evt.preventDefault();
     let itemName = evt.target.value;
+    if (this.defaults.includes(itemName)) {
+      itemName = null;
+    }
     this.props.onItemChange(itemName);
   }
 
