@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar.js';
 import FilterBox from './FilterBox.js';
 import IngredientPanel from './IngredientPanel.js';
+import SearchButton from './SearchButton.js';
 import './style/TaskBar.css'
 
 class TaskBar extends React.Component {
@@ -39,15 +40,15 @@ class TaskBar extends React.Component {
   }
 
   onIngredChange = (ingredients) => {
-    this.setState({ingredients: ingredients}, this.filterer);
+    this.setState({ingredients: ingredients});
   }
 
   onCatChange = (category) => {
-    this.setState({category: category}, this.filterer);
+    this.setState({category: category});
   }
 
   onGlassChange = (glass) => {
-    this.setState({glass: glass}, this.filterer);
+    this.setState({glass: glass});
   }
 
   render() {
@@ -71,6 +72,7 @@ class TaskBar extends React.Component {
             category='glass'
             options={this.props.glasses}
           />
+          <SearchButton onSearch={this.filterer}/>
         </div>
         <IngredientPanel delete={this.deleteIngredient} ingredients={this.state.ingredients}/>
       </div>

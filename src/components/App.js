@@ -1,11 +1,8 @@
 /*
 TODO 
 
+Make the search bar update Taskbar's state.
 
-integrate the ingredient list system into the taskbar. will require moving IngredientPanel component
-into the taskbar. 
-
-Change event listeners arround so that filterer wont be called every change but only when a buttons is pressed.
 */
 
 

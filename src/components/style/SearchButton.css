@@ -1,0 +1,10 @@
+#search-button {
+  background-color: white;
+  color: black;
+  transition: 0.25s;
+}
+
+#search-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
