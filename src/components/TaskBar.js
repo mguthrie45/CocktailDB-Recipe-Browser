@@ -1,22 +1,45 @@
 import React from 'react';
 import SearchBar from './SearchBar.js';
 import FilterBox from './FilterBox.js';
+import IngredientPanel from './IngredientPanel.js';
+import './style/TaskBar.css'
 
 class TaskBar extends React.Component {
-  state = {name: null, ingredient: null, category: null, glass: null};
+  state = {name: null, ingredients: [], category: null, glass: null};
 
   //callback for asynchronous setState
   filterer = () => {
     this.props.filterer(
       this.state.name,
-      this.state.ingredient,
+      this.state.ingredients,
       this.state.category,
       this.state.glass
     );
   }
 
-  onIngredChange = (ingredient) => {
-    this.setState({ingredient: ingredient}, this.filterer);
+  deleteIngredient = (name) => {
+    let ingredients = this.state.ingredients.map((item) => {
+        return item;
+    });
+
+    let id = ingredients.indexOf(name);
+    ingredients.splice(id);
+
+    this.setState({ingredients: ingredients});
+  }
+
+  addIngredient = (name) => {
+      let ingredients = this.state.ingredients.map((item) => {
+          return item;
+      });
+
+      ingredients.push(name);
+
+      this.setState({ingredients: ingredients});
+  }
+
+  onIngredChange = (ingredients) => {
+    this.setState({ingredients: ingredients}, this.filterer);
   }
 
   onCatChange = (category) => {
@@ -30,23 +53,26 @@ class TaskBar extends React.Component {
   render() {
 
     return (
-      <div className='ui menu' style={{marginBottom: '40px', background: 'none'}}>
-        <SearchBar onSubmit={this.props.onSearch}/>
-        <FilterBox
-          onItemChange={this.onIngredChange}
-          category='ingredients'
-          options={this.props.ingredients}
-        />
-        <FilterBox
-          onItemChange={this.onCatChange}
-          category='type'
-          options={this.props.categories}
-        />
-        <FilterBox
-          onItemChange={this.onGlassChange}
-          category='glass'
-          options={this.props.glasses}
-        />
+      <div>
+        <div className='ui menu' id='taskbar'>
+          <SearchBar onSubmit={this.props.onSearch}/>
+          <FilterBox
+            onItemChange={this.addIngredient}
+            category='ingredients'
+            options={this.props.ingredients}
+          />
+          <FilterBox
+            onItemChange={this.onCatChange}
+            category='type'
+            options={this.props.categories}
+          />
+          <FilterBox
+            onItemChange={this.onGlassChange}
+            category='glass'
+            options={this.props.glasses}
+          />
+        </div>
+        <IngredientPanel delete={this.deleteIngredient} ingredients={this.state.ingredients}/>
       </div>
     )
   }

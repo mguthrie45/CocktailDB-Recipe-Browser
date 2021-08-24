@@ -1,3 +1,15 @@
+/*
+TODO 
+
+
+integrate the ingredient list system into the taskbar. will require moving IngredientPanel component
+into the taskbar. 
+
+Change event listeners arround so that filterer wont be called every change but only when a buttons is pressed.
+*/
+
+
+
 import './style/App.css';
 import React from 'react';
 import axios from 'axios';
@@ -92,26 +104,25 @@ class App extends React.Component {
   getDrinkByIngredient = async (ingredient) => {
     let path = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredient;
     let response = await axios.get(path);
+    console.log(response);
     return response.data.drinks;
   }
 
-  getDrinksByIngredients = (ingredients) => {
+  getDrinksByIngredients = async (ingredients) => {
     let filteredDrinks = [];
-    for (let ingredient in ingredients) {
-      let drinks = this.getDrinkByIngredient(ingredient).drinks;
+    for (let id in ingredients) {
+      let ingredient = ingredients[id];
+      let drinks = await this.getDrinkByIngredient(ingredient);
       if (filteredDrinks.length == 0) {
         filteredDrinks = drinks;
       }
       else {
-        filteredDrinks = filteredDrinks.filter((item) => {
-          return drinks.includes(item);
-        });
+        filteredDrinks.splice(0, filteredDrinks.length, ...filterDrinks(filteredDrinks, drinks));
         if (filteredDrinks.length == 0) {
           break;
         }
       }
     }
-
     return filteredDrinks;
   }
 
@@ -121,14 +132,29 @@ class App extends React.Component {
     return response.data.drinks;
   }
 
-  filter = async (name, ingredient, category, glass) => {
-    this.setState({loading: true});
+  filter = async (name, ingredients, category, glass) => {
+    if ((name === '' || name == null) && ingredients.length == 0 && category == null && glass == null) {
+      this.setDrinksByName('');
+      return;
+    }
 
+    this.setState({loading: true});
     let drinks = null;
+
     if (name !== '' && name !== null) {
       //if a name is searched, the data will already be in state.
       drinks = this.state.data;
     }
+    //ingredients
+    if (drinks !== null && ingredients.length !== 0) {
+      //find intersection of already existing data with data by ingredients
+      let ingredDrinks = await this.getDrinksByIngredients(ingredients);
+      drinks.splice(0, drinks.length, ...filterDrinks(drinks, ingredDrinks));
+    }
+    else if (ingredients.length !== 0) {
+      drinks = await this.getDrinksByIngredients(ingredients);
+    }
+    //category
     if (drinks !== null && category !== null) {
       //find intersection of already existing data with data by category
       let catDrinks = await this.getDrinksByCategory(category);
@@ -138,7 +164,7 @@ class App extends React.Component {
       //set data to search by category
       drinks = await this.getDrinksByCategory(category);
     }
-
+    //glass
     if (drinks !== null && glass !== null) {
       //find intersection of already existing data with data by glass
       let glassDrinks = await this.getDrinksByGlass(glass);
@@ -149,6 +175,7 @@ class App extends React.Component {
       drinks = await this.getDrinksByGlass(glass);
     }
 
+    //getting names to reload more verbose drink objects
     let names = drinks.map((item) => {
       return item.strDrink;
     });

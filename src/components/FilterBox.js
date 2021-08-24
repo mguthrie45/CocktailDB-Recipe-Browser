@@ -54,8 +54,13 @@ class FilterBox extends React.Component {
   onItemChange = (evt) => {
     evt.preventDefault();
     let itemName = evt.target.value;
-    if (this.defaults.includes(itemName)) {
+    if (itemName === '') {
       itemName = null;
+    }
+
+    if (this.props.category === 'ingredients') {
+      this.props.onItemChange(itemName);
+      return;
     }
     this.props.onItemChange(itemName);
   }
