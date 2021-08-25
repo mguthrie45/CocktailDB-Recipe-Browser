@@ -1,11 +1,12 @@
 import React from 'react';
+import IngredientLabel from './IngredientLabel.js';
 import './style/IngredientPanel.css';
 
 class IngredientPanel extends React.Component {
     mapIngredients() {
-        let ingredients = this.props.ingredients.map((item) => {
+        let ingredients = this.props.ingredients.map((item, key) => {
             return (
-                <div className="ui black horizontal label" style={{color: 'white', borderRadius: '0'}}>{item}</div>
+                <IngredientLabel delete={this.props.delete} name={item} key={item}/>
             );
         });
         return ingredients;
