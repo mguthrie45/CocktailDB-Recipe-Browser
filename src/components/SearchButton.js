@@ -9,7 +9,7 @@ class SearchButton extends React.Component {
     render() {
         return (
             <div className='item' id='search-button' onClick={this.onSearch}>
-                Apply
+                <span id='apply-text'>Apply</span>
             </div>
         );
     }

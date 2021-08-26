@@ -1,7 +1,12 @@
 #search-button {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   transition: 0.25s;
+}
+
+#apply-text {
+  padding: 12px;
+  border: 1px solid white;
 }
 
 #search-button:hover {

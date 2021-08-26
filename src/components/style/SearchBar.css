@@ -1,1 +1,7 @@
-
+#search-input,
+.field,
+form {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+}
