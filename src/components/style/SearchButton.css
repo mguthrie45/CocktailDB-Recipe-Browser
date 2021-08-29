@@ -1,5 +1,5 @@
 #search-button {
-  background-color: black;
+  background: none;
   color: white;
   transition: 0.25s;
 }

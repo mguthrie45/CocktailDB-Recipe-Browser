@@ -55,26 +55,30 @@ class TaskBar extends React.Component {
 
     return (
       <div>
-        <div className='ui menu' id='taskbar'>
-          <SearchBar onSubmit={this.props.onSearch}/>
-          <FilterBox
-            onItemChange={this.addIngredient}
-            category='ingredients'
-            options={this.props.ingredients}
-          />
-          <FilterBox
-            onItemChange={this.onCatChange}
-            category='type'
-            options={this.props.categories}
-          />
-          <FilterBox
-            onItemChange={this.onGlassChange}
-            category='glass'
-            options={this.props.glasses}
-          />
-          <SearchButton onSearch={this.filterer}/>
+        <div id='taskbar-cont'>
+          <div id='child-cont'>
+            <div className='ui menu' id='taskbar'>
+              <SearchBar onSubmit={this.props.onSearch}/>
+              <FilterBox
+                onItemChange={this.addIngredient}
+                category='ingredients'
+                options={this.props.ingredients}
+              />
+              <FilterBox
+                onItemChange={this.onCatChange}
+                category='type'
+                options={this.props.categories}
+              />
+              <FilterBox
+                onItemChange={this.onGlassChange}
+                category='glass'
+                options={this.props.glasses}
+              />
+              <SearchButton onSearch={this.filterer}/>
+            </div>
+          </div>
+          <IngredientPanel delete={this.deleteIngredient} ingredients={this.state.ingredients}/>
         </div>
-        <IngredientPanel delete={this.deleteIngredient} ingredients={this.state.ingredients}/>
       </div>
     )
   }

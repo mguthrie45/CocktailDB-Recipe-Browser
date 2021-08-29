@@ -187,7 +187,7 @@ class App extends React.Component {
   renderContent() {
     if (this.state.data == null && !this.state.invalidSearch || this.state.loading) {
       return (
-        <div style={{width: '80%', minWidth: '860px', marginLeft: 'auto', marginRight: 'auto'}}>
+        <div style={{width: '100%', minWidth: '860px', marginLeft: 'auto', marginRight: 'auto'}}>
           <TaskBar
             categories={this.state.categories}
             ingredients={this.state.ingredients}
@@ -196,7 +196,7 @@ class App extends React.Component {
             filterer={this.filter}
           />
           <div id='loading'>
-            <div className="ui active dimmer">
+            <div className="ui active dimmer" style={{backgroundColor: '#101010'}}>
               <div className="ui loader"></div>
             </div>
           </div>
@@ -206,7 +206,7 @@ class App extends React.Component {
     else if (this.state.data == null && this.state.invalidSearch) {
       console.log('invalid search');
       return (
-        <div style={{width: '80%', minWidth: '860px', marginLeft: 'auto', marginRight: 'auto'}}>
+        <div style={{width: '100%', minWidth: '860px', marginLeft: 'auto', marginRight: 'auto'}}>
           <TaskBar
             categories={this.state.categories}
             ingredients={this.state.ingredients}
@@ -220,7 +220,7 @@ class App extends React.Component {
     }
     else {
       return (
-        <div style={{width: '80%', minWidth: '860px', marginLeft: 'auto', marginRight: 'auto'}}>
+        <div style={{width: '100%', minWidth: '860px', marginLeft: 'auto', marginRight: 'auto'}}>
           <TaskBar
             categories={this.state.categories}
             ingredients={this.state.ingredients}

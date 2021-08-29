@@ -15,7 +15,9 @@ class IngredientPanel extends React.Component {
     render() {
         return (
             <div className='ui container' id='panel'>
-                {this.mapIngredients()}
+                <div id='child-cont'>
+                    {this.mapIngredients()}
+                </div>
             </div>
         );
     }

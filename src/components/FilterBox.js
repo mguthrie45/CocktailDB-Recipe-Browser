@@ -68,7 +68,7 @@ class FilterBox extends React.Component {
   render() {
     return (
       <div className='item' style={{paddingLeft: '0'}}>
-        <select onChange={this.onItemChange} className="ui search dropdown" style={{backgroundColor: 'black', border: '1px solid white', color: 'white'}}>
+        <select onChange={this.onItemChange} className="ui search dropdown" style={{backgroundColor: '#202020', border: '1px solid white', color: 'white'}}>
           <option value=''>{this.props.category}</option>
           {this.mapOptions()}
         </select>

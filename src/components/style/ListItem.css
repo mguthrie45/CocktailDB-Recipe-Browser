@@ -1,8 +1,7 @@
 #drink-card {
   transition: 0.25s;
-  box-shadow: 0 4px 14px 0 rgba(255, 102, 255, 0.3),
-    0 6px 20px 0 rgba(255, 112, 255, 0.25);
   border-radius: 5px;
+  box-shadow: none;
   background-color: black;
 }
 

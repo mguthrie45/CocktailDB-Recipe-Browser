@@ -38,7 +38,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <div className='ui five column grid'>
+      <div className='ui six column grid' style={{width: '80%', marginLeft: 'auto', marginRight: 'auto'}}>
         {this.mapResults()}
       </div>
     );

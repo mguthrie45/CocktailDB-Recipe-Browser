@@ -1,7 +1,20 @@
 #taskbar {
-  margin-top: 15px;
+  padding-top: 5px;
   margin-bottom: 5px;
-  background: none;
+  width: 100%;
+  background: #202020;
+}
+
+#taskbar-cont {
+  background: #202020;
+  margin-bottom: 20px;
+}
+
+#child-cont {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
 }
 
 #taskbar-item {
